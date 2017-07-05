@@ -1,23 +1,24 @@
 # Flight Visualization
 ## MVP
-Map flight patterns between major airports for January 1st 2015.
+Map flight patterns between major airports for January 1st 2017.
 
 - [ ] Animate flights
 - [ ] Pause and reset animation.
 - [ ] Change speed of animation
 - [ ] Production README
 
-## Technologies
+##Layout
+
+The app will consist of a map overlayed with animated flights. Controls will be located at the bottom of the board.
+
+## Technologies and Architecture
 
 * JavaScript
-* Google Maps api
-* TopoJSON
+* Google Maps API
 * d3.js
-* d3.geo
 
 Data on airport location(latitude and longitude) can be found on NaturalEarthData.com
-Found flight data kaggle.com, includes, date, departure time, arrival time, airport ID, Airport 3 letter abbrev.
-
+Found flight data transtats.bts.gov, includes, date, departure time, arrival time, airport ID, Airport 3 letter abbrev.
 
 
 ## Implementation Timeline
@@ -35,5 +36,5 @@ Allow users to pause, reset and change speed of animation.
 
 **Bonus Features**
 
-- [ ] Increase the number of days animated.
+- [ ] Increase the number of days/flights animated.
 - [ ] Add airport filters.
