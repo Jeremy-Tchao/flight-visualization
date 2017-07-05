@@ -7,7 +7,7 @@ Map flight patterns between major airports for January 1st 2017.
 - [ ] Change speed of animation
 - [ ] Production README
 
-##Layout
+## Layout
 
 The app will consist of a map overlayed with animated flights. Controls will be located at the bottom of the board.
 
