@@ -5,14 +5,21 @@
     <title>Flights</title>
 
     <style>
-      svg {
-        background: lightgrey
+      * {
+        font-family: sans-serif;
       }
-      .countries {
-        fill: none;
+      p {
+        font-size: 0.85em
+      }
+      svg {
+        background: white;
+      }
+      .country {
+        fill: #cccccc;
         stroke: black;
         stroke-width: 0.5px;
       }
+
     </style>
   </head>
   <body>
@@ -20,7 +27,7 @@
     <div id="map"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
-    <script src="map/map_visualization.js"></script>
+    <script src="map_visualization.js"></script>
 
   </body>
 </html>
