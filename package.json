@@ -1,0 +1,23 @@
+{
+  "name": "flight-visualization",
+  "version": "1.0.0",
+  "description": "",
+  "main": "flight.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koutst/flight-visualization.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koutst/flight-visualization/issues"
+  },
+  "homepage": "https://github.com/koutst/flight-visualization#readme",
+  "dependencies": {
+    "topojson": "^1.6.27"
+  }
+}
