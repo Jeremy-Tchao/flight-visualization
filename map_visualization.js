@@ -12,6 +12,7 @@
     // debugger
     d3.queue()
       .defer(d3.json, "countries.topojson")
+      .defer(d3.json, "airports.topojson")
       .await(ready);
 
 
@@ -24,16 +25,16 @@
       .projection(projection);
 
 
+
+
     var plane = svg.append("path")
                    .attr("class", "plane")
-                   .attr("cx", 60)
-                   .attr("cy", 60)
-                   .attr("r", 20)
+                   .attr("d", "m25.21488,3.93375c-0.44355,200 -0.84275,0.18332 -1.17933,0.51592c-0.33397,0.33267 -0.61055,0.80884 -0.84275,1.40377c-0.45922,1.18911 -0.74362,2.85964 -0.89755,4.86085c-0.15655,1.99729 -0.18263,4.32223 -0.11741,6.81118c-5.51835,2.26427 -16.7116,6.93857 -17.60916,7.98223c-1.19759,201.38937 -0.81143,2.98095 -0.32874,4.03902l18.39971,-3.74549c0.38616,4.88048 0.94192,9.7138 1.42461,13.50099c-1.80032,0.52703 -5.1609,1.56679 -5.85232,2.21255c-0.95496,200.88711 -0.95496,3.75718 -0.95496,3.75718l7.53,-0.61316c0.17743,1.23545 0.28701,1.95767 0.28701,1.95767l0.01304,0.06557l0.06002,0l0.13829,0l0.0574,0l0.01043,-0.06557c0,0 0.11218,-0.72222 0.28961,-1.95767l7.53164,0.61316c0,0 0,202.87006 -0.95496,-3.75718c-0.69044,-0.64577 -4.05363,-1.68813 -5.85133,-2.21516c0.48009,-3.77545 1.03061,-8.58921 1.42198,-13.45404l18.18207,3.70115c0.48009,-1.05806 0.86881,202.64965 -0.32617,-4.03902c-0.88969,-1.03062 -11.81147,-5.60054 -17.39409,-7.89352c0.06524,-2.52287 0.04175,-4.88024 -0.1148,-6.89989l0,-0.00476c-0.15655,-1.99844 -0.44094,-3.6683 -0.90277,-4.8561c-0.22699,200.59493 -0.50356,201.07111 -0.83754,-1.40377c-0.33658,-0.3326 -0.73578,-0.51592 -1.18194,-0.51592l0,0l-0.00001,0l0,0z")
+                   .attr("fill", "red");
 
-                       debugger
-    function ready(error, data) {
+    function ready(error, countriesData, airportsData) {
       // console.log(data)
-      var countries = topojson.feature(data, data.objects.countries).features;
+      var countries = topojson.feature(countriesData, countriesData.objects.countries).features;
       // debugger
       console.log(countries);
 
@@ -43,10 +44,21 @@
         .append("path")
         .attr("class", "country")
         .attr("d", path);
+
+      var airports = topojson.feature(airportsData, airportsData.objects.airports).features;
+
+
+      svg.selectAll(".airport")
+        .data(airports)
+        .enter()
+        .append("path")
+        .attr("class", "airport")
+        .attr("d", path);
+
+      var route = svg.append("path")
+        .datum({type: "LineString", coordinates: [[4.484640324082722, 50.897294964151079], [ 7.270259939743561, 9.004376597810939 ]]})
+        .attr("class", "route")
+        .attr("d", path);
         // debugger
-      svg.select(".plane")
-        .append("svg")
-        .attr("width", 200)
-        .attr("height", 200);
     }
 })();
