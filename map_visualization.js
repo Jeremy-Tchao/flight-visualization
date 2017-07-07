@@ -13,6 +13,7 @@
     d3.queue()
       .defer(d3.json, "countries.topojson")
       .defer(d3.json, "airports.topojson")
+      .defer(d3.csv, "flights.csv")
       .await(ready);
 
 
@@ -39,11 +40,11 @@
     //                     .attr("height", 5)
     //                     .attr("fill", "red");
 
-    function ready(error, countriesData, airportsData) {
-      // console.log(data)
+    function ready(error, countriesData, airportsData, flightData) {
+      console.log(flightData)
       var countries = topojson.feature(countriesData, countriesData.objects.countries).features;
       // debugger
-      console.log(countries);
+      // console.log(countries);
 
       svg.selectAll(".country")
         .data(countries)
@@ -54,18 +55,48 @@
 
       var airports = topojson.feature(airportsData, airportsData.objects.airports).features;
 
+
+      var airportsNameCoord = {};
+
+      for (var i = 0; i < airports.length; i++) {
+        let iata = airports[i].properties.iata_code;
+        let coord = airports[i].geometry.coordinates
+        airportsNameCoord[iata] = {coord: coord}
+      }
+      // var flights =
+      debugger
+
+      for (var i = 0; i < flightData.length; i++) {
+        flightData[i]
+      }
+
+      // for (var i = 0; i < array.length; i++) {
+      //   array[i]
+      // }
+
+      // let route = svg.append("path")
+      //   .datum({type: "MultiLineString", coordinates: [airports[0].geometry.coordinates, airports[3].geometry.coordinates]})
+      //   .attr("class", "route")
+      //   .attr("d", path)
+      //   .attr('opacity', 1)
+      //   .transition()
+      //   .duration(5000)
+      //   .remove();
+      // 
+      // for (var i = 0; i < array.length; i++) {
+      //   array[i]
+      // }
       // debugger
       // var totalLength = path.node().getTotalLength();
-      debugger
+      // debugger
       let route = svg.append("path")
         .datum({type: "LineString", coordinates: [airports[0].geometry.coordinates, airports[3].geometry.coordinates]})
         .attr("class", "route")
         .attr("d", path)
         .attr('opacity', 1)
-        // .attr("stroke-dashoffset", totalLength)
-        // .ease("linear")
-        // .attr("stroke-dashoffset", 0)
-        ;
+        .transition()
+        .duration(5000)
+        .remove();
 
         // debugger
 
@@ -89,9 +120,13 @@
       .attr("stroke-width", 0.5)
 
       function transition(rect, route) {
-        rect.transition()
+        rect.attr('opacity', 1)
+        .transition()
        .duration(5000)
-       .attrTween("transform", translateAttr(route.node()));
+       .attrTween("transform", translateAttr(route.node()))
+       .attr("d", path.pointRadius(0))
+       .remove()
+       ;
 }
       // debugger
       function translateAttr(path) {
@@ -106,6 +141,5 @@
       }
 
       transition(rect, route);
-
     }
 })();

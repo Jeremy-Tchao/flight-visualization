@@ -11,14 +11,35 @@
       p {
         font-size: 0.85em
       }
+      body{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+      h1{
+        display: flex;
+        justify-content: center;
+        
+      }
+      div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
       svg {
-        background: white;
+        background: #7d7e7d; /* Old browsers */
+        background: -moz-linear-gradient(left, #7d7e7d 0%, #0e0e0e 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, #7d7e7d 0%,#0e0e0e 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, #7d7e7d 0%,#0e0e0e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-9 */
+        border: 5px solid black;
 
       }
       .country {
-        fill: #cccccc;
+        fill: grey;
         stroke: black;
         stroke-width: 0.5px;
+
       }
       .airport {
         fill: #036;
@@ -30,14 +51,14 @@
       }
       .route{
         /*fill:"red";*/
-        stroke: #39FF14;
+        stroke: #39FF14v;
         stroke-width:1;
         fill-opacity:0.6;
       }
     </style>
   </head>
   <body>
-
+    <h1 className="title">Flight Viz</h1>
     <div id="map"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
