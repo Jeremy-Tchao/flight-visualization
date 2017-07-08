@@ -28,30 +28,46 @@
 
 
 
-    // var plane = svg.append("path")
-    //                .attr("class", "plane")
-    //                .attr("d", "m25.21488,3.93375c-0.44355,200 -0.84275,0.18332 -1.17933,0.51592c-0.33397,0.33267 -0.61055,0.80884 -0.84275,1.40377c-0.45922,1.18911 -0.74362,2.85964 -0.89755,4.86085c-0.15655,1.99729 -0.18263,4.32223 -0.11741,6.81118c-5.51835,2.26427 -16.7116,6.93857 -17.60916,7.98223c-1.19759,201.38937 -0.81143,2.98095 -0.32874,4.03902l18.39971,-3.74549c0.38616,4.88048 0.94192,9.7138 1.42461,13.50099c-1.80032,0.52703 -5.1609,1.56679 -5.85232,2.21255c-0.95496,200.88711 -0.95496,3.75718 -0.95496,3.75718l7.53,-0.61316c0.17743,1.23545 0.28701,1.95767 0.28701,1.95767l0.01304,0.06557l0.06002,0l0.13829,0l0.0574,0l0.01043,-0.06557c0,0 0.11218,-0.72222 0.28961,-1.95767l7.53164,0.61316c0,0 0,202.87006 -0.95496,-3.75718c-0.69044,-0.64577 -4.05363,-1.68813 -5.85133,-2.21516c0.48009,-3.77545 1.03061,-8.58921 1.42198,-13.45404l18.18207,3.70115c0.48009,-1.05806 0.86881,202.64965 -0.32617,-4.03902c-0.88969,-1.03062 -11.81147,-5.60054 -17.39409,-7.89352c0.06524,-2.52287 0.04175,-4.88024 -0.1148,-6.89989l0,-0.00476c-0.15655,-1.99844 -0.44094,-3.6683 -0.90277,-4.8561c-0.22699,200.59493 -0.50356,201.07111 -0.83754,-1.40377c-0.33658,-0.3326 -0.73578,-0.51592 -1.18194,-0.51592l0,0l-0.00001,0l0,0z")
-    //                .attr("fill", "red");
-
-    //  var rectangle = svg.append("rect")
-    //                     // .attr("x", 10)
-    //                     // .attr("y", 10)
-    //                     .attr("width", 5)
-    //                     .attr("height", 5)
-    //                     .attr("fill", "red");
 
     function ready(error, countriesData, airportsData, flightData) {
       console.log(flightData)
-      var countries = topojson.feature(countriesData, countriesData.objects.countries).features;
+      var countriesParsed = topojson.feature(countriesData, countriesData.objects.countries).features;
       // debugger
       // console.log(countries);
 
       svg.selectAll(".country")
-        .data(countries)
+        .data(countriesParsed)
         .enter()
         .append("path")
         .attr("class", "country")
-        .attr("d", path);
+        .attr("d", path)
+        .on("mouseover", function(d){
+          d3.select(this.parentNode.parentNode.parentNode.parentNode)
+          .append("text")
+          .attr("class", "countrydetails")
+          .text(
+            "Country: " + d.properties.NAME
+          )
+          d3.select(this.parentNode.parentNode.parentNode.parentNode)
+          .append("text")
+          .attr("class", "countrydetails")
+          .text(
+            "Continent: " + d.properties.CONTINENT
+          )
+          d3.select(this.parentNode.parentNode.parentNode.parentNode)
+          .append("text")
+          .attr("class", "countrydetails")
+          .text(
+            "GDP (in millions): " + d.properties.GDP_MD_EST
+          )
+          // debugger
+        })
+        .on("mouseout", function(d){
+          d3.selectAll("text.countrydetails").remove()
+        });
+
+
+
 
       var airports = topojson.feature(airportsData, airportsData.objects.airports).features;
 
@@ -63,73 +79,30 @@
         let coord = airports[i].geometry.coordinates
         airportsNameCoord[iata] = {coord: coord}
       }
-      // var flights =
-      debugger
 
+      let flights = [];
       for (var i = 0; i < flightData.length; i++) {
-        flightData[i]
+        orgAir = flightData[i]["ORIGIN"];
+        destAir = flightData[i]["DEST"];
+        if (airportsNameCoord[orgAir] && airportsNameCoord[destAir]) {
+          flightData[i]["ORGCOORD"] = airportsNameCoord[orgAir]["coord"];
+          flightData[i]["DESTCOORD"] = airportsNameCoord[destAir]["coord"];
+          flights.push(flightData[i])
+        }
       }
-
-      // for (var i = 0; i < array.length; i++) {
-      //   array[i]
-      // }
-
-      // let route = svg.append("path")
-      //   .datum({type: "MultiLineString", coordinates: [airports[0].geometry.coordinates, airports[3].geometry.coordinates]})
-      //   .attr("class", "route")
-      //   .attr("d", path)
-      //   .attr('opacity', 1)
-      //   .transition()
-      //   .duration(5000)
-      //   .remove();
-      // 
-      // for (var i = 0; i < array.length; i++) {
-      //   array[i]
-      // }
-      // debugger
-      // var totalLength = path.node().getTotalLength();
-      // debugger
-      let route = svg.append("path")
-        .datum({type: "LineString", coordinates: [airports[0].geometry.coordinates, airports[3].geometry.coordinates]})
-        .attr("class", "route")
-        .attr("d", path)
-        .attr('opacity', 1)
-        .transition()
-        .duration(5000)
-        .remove();
-
-        // debugger
-
-      svg.selectAll(".airport")
-      .data(airports)
-      .enter()
-      .append("path")
-      .attr("class", "airport")
-      .attr("d", path.pointRadius(1.5))
-      .attr("scale", 100);
-
-      // debugger
-
-      let rect = svg.selectAll(".rect")
-      .data([airports[0]])
-      .enter()
-      .append("path")
-      .attr("class", "rect")
-      .attr("fill", "red")
-      .attr("d", path.pointRadius(5))
-      .attr("stroke-width", 0.5)
 
       function transition(rect, route) {
         rect.attr('opacity', 1)
         .transition()
-       .duration(5000)
-       .attrTween("transform", translateAttr(route.node()))
-       .attr("d", path.pointRadius(0))
-       .remove()
-       ;
-}
-      // debugger
+        .duration(5000)
+        .attrTween("transform", translateAttr(route.node()))
+        .attr("d", path.pointRadius(0))
+        .remove()
+        ;
+      }
+
       function translateAttr(path) {
+        // debugger
         let l = path.getTotalLength();
         return function(i) {
           return function(t) {
@@ -140,6 +113,62 @@
         }
       }
 
-      transition(rect, route);
+
+      for (var i = 0; i < flights.length-1; i++) {
+        let route = svg.append("path")
+          .data([{type: "LineString", coordinates: [flights[i].ORGCOORD, flights[i].DESTCOORD]}])
+          .attr("class", "route")
+          .attr("d", path)
+          .attr('opacity', .5)
+          .attr('fill', "none")
+          .attr('stroke', '	#00FF00')
+          .transition()
+          .duration(5000)
+          .remove();
+          // debugger
+
+        let rect = svg.selectAll(".rect")
+        .data([airports[0]])
+        .enter()
+        .append("path")
+        .attr("class", "rect")
+        .attr("fill", "red")
+        .attr("d", path)
+        .attr("stroke-width", 0.5)
+
+
+        // transition(rect, route);
+      }
+      // var totalLength = path.node().getTotalLength();
+
+
+      svg.selectAll(".airport")
+      .data(airports)
+      .enter()
+      .append("path")
+      .attr("class", "airport")
+      .attr("d", path.pointRadius(1.5))
+      .attr("scale", 100)
+      .on("mouseover", function(d){
+        // debugger
+        d3.select(this.parentNode.parentNode.parentNode.parentNode)
+        .append("text")
+        .attr("class", "countrydetails")
+        .text(
+          "Airport: " + d.properties.name
+        )
+        d3.select(this.parentNode.parentNode.parentNode.parentNode)
+        .append("text")
+        .attr("class", "countrydetails")
+        .text(
+          "IATA: " + d.properties.iata_code
+        )
+        // debugger
+      })
+      .on("mouseout", function(d){
+        d3.selectAll("text.countrydetails").remove()
+      });
+
+
     }
 })();
