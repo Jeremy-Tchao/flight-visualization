@@ -20,12 +20,5 @@
   "dependencies": {
     "topojson": "^1.6.27"
   },
-  "scripts": {
-    "start": "node map_visualization.js"
-  },
-  "engines": {
-    "node": "6.10.3",
-    "npm": "3.10.10"
-  },
   "devDependencies": {}
 }
