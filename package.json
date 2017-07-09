@@ -20,5 +20,8 @@
   "dependencies": {
     "topojson": "^1.6.27"
   },
+  "scripts": {
+    "start": "index.html",
+  },
   "devDependencies": {}
 }
