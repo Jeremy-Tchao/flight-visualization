@@ -1,4 +1,3 @@
-import * as d3 from "d3";
 
 (function(){
   var margin = { top: 50, left: 50, right: 50, down: 50},
