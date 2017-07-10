@@ -107,7 +107,7 @@
         return function(i) {
           return function(t) {
             let p = path.getPointAtLength(t * l);
-            return "translate(" + (p.x-220) + "," + (p.y-73) + ")";
+            return "translate(" + (p.x) + "," + (p.y) + ")";
           }
         }
       }
@@ -119,26 +119,26 @@
         console.log(timer)
         for (var i = 0; i < flights.length-1; i++) {
           if (parseInt(flights[i].DEP_TIME) === timer) {
-            let route = svg
-            .data([{type: "LineString", coordinates: [flights[i].coordinates, flights[i].DESTCOORD]}])
-            .append("path")
-            .attr("class", "route")
-            .attr("d", path)
-            .attr('opacity', 0.5)
-            .attr('fill', "none")
-            .attr('stroke-width', 0.01)
-            .attr('stroke', '	#00FF00')
-            .transition()
-            .duration(1000)
-            .remove();
-
-            let rect = svg
-            .data([flights[i]])
-            .append("path")
-            .attr("class", "rect")
-            .attr("fill", "red")
-            .attr("d", path)
-            .attr("stroke-width", 0.5)
+            // let route = svg
+            // .data([{type: "LineString", coordinates: [flights[i].coordinates, flights[i].DESTCOORD]}])
+            // .append("path")
+            // .attr("class", "route")
+            // .attr("d", path)
+            // .attr('opacity', 0.5)
+            // .attr('fill', "none")
+            // .attr('stroke-width', 0.01)
+            // .attr('stroke', '	#00FF00')
+            // .transition()
+            // .duration(1000)
+            // .remove();
+            //
+            // let rect = svg
+            // .data([flights[i]])
+            // .append("path")
+            // .attr("class", "rect")
+            // .attr("fill", "red")
+            // .attr("d", path)
+            // .attr("stroke-width", 0.5)
 
             transition(svg
             .data([flights[i]])
