@@ -2,13 +2,15 @@
   "name": "flight-visualization",
   "version": "1.0.0",
   "description": "",
-  "main": "flight.js",
+  "main": "index.js",
   "engines": {
-    "node": "6.10.3",
-    "npm": "3.10.10"
+    "node": "8.1.2",
+    "npm": "5.0.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server",
+    "webpack": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,13 @@
   "homepage": "https://github.com/koutst/flight-visualization#readme",
   "dependencies": {
     "d3": "^4.9.1",
-    "topojson": "^1.6.27"
+    "html-loader": "^0.4.5",
+    "node-loader": "^0.6.0",
+    "topojson": "^1.6.27",
+    "webpack": "^3.3.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "directories": {
+    "lib": "lib"
+  }
 }

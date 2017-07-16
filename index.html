@@ -3,42 +3,54 @@
   <head>
     <meta charset="utf-8">
     <title>Flights</title>
+      <link rel="shortcut icon" href="images/favicon.ico" />
 
     <style>
       <link href="https://fonts.googleapis.com/css?family=Robo+Slab" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
+
       p {
         font-size: 0.85em
       }
+      html{
+        background: black;
+        /*background: #1e5799;
+        background: -moz-linear-gradient(left, #1e5799 0%, #2989d8 36%, #207cca 80%, #207cca 100%, #7db9e8 100%, #207cca 102%);
+        background: -webkit-linear-gradient(left, #1e5799 0%,#2989d8 36%,#207cca 80%,#207cca 100%,#7db9e8 100%,#207cca 102%);
+        background: linear-gradient(to right, #1e5799 0%,#2989d8 36%,#207cca 80%,#207cca 100%,#7db9e8 100%,#207cca 102%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#207cca',GradientType=1 );*/
+        width:100vw;
+      }
       body{
         display: flex;
-        justify-content: center;
-        flex-direction: column;
-        background: #3c3c3c;
-        font: "Robo Slab";
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0;
       }
-      h1{
+      .title{
+        font-family: "Robo Slab", helvetica;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         color: white;
+        order: -5;
       }
       div{
-        display: flex;
+        /*display: flex;
         align-items: center;
-        justify-content: center;
-      }
-      svg {
-        background: #7d7e7d; /* Old browsers */
-        background: -moz-linear-gradient(left, #7d7e7d 0%, #0e0e0e 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(left, #7d7e7d 0%,#0e0e0e 100%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(to right, #7d7e7d 0%,#0e0e0e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-9 */
-        border: 5px solid black;
+        justify-content: center;*/
 
       }
+      svg {
+        background: transparent;
+        /*display: flex;*/
+        /*padding-top: 60px;*/
+        /*border-top: 4px solid black;*/
+      }
       .country {
-        fill: grey;
-        stroke: black;
+        fill: #393939;
+        stroke:#ececec;
         stroke-width: 0.5px;
 
       }
@@ -53,25 +65,70 @@
       .route{
         /*fill:"red";*/
         stroke: #39FF14v;
-        stroke-width:.5;
+        stroke-width:1;
         fill-opacity:0.3;
       }
       .countrydetails{
+        white-space: nowrap;
         margin-top: 10px;
         display: flex;
-        justify-content: center;
-        color: white;
-        font: 'Zilla Slab';
+        justify-content: left;
+        color: grey;
+        font-family: 'Robo Slab';
+        order: -1;
+        margin-left: 20px;
       }
+      .clock{
+        fill: black;
+        position: absolute;
+      }
+      .pause{
+        color:white;
+
+        order: -2;
+        background: black;
+        border: 3px solid white;
+        width: 60px;
+        height: 25px;
+        margin-left: 20px;
+        border-radius: 5px;
+      }
+      .play{
+        color:white;
+        order: -2;
+        background: black;
+        border: 3px solid white;
+        border-radius: 5px;
+        width: 60px;
+        height: 25px;
+        margin-left: 5px;
+      }
+      .speed{
+        color: lightgrey;
+        order: -2;
+      }
+      .map{
+      }
+      svg{
+        background: #ececec;
+      }
+      .rect-g-map{
+        fill: #000006;
+      }
+
+
+
+
     </style>
   </head>
   <body>
-    <h1 className="title">Flight Viz</h1>
-    <div id="map"></div>
+    <img src="images/maple-white.png" class="title"></img>
+    <div id="map" class="map"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
-    <script src="map_visualization.js"></script>
-
-
+    <script src="lib/map_visualization.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://koutst:AIzaSyCEHgWuIYyTXOzKriLZZgrW8I7DBBZptr8@opensky-network.org/api/states/all"></script>
+    <!-- <script type="text/javascript" src="build/main.bundle.js" charset="utf-8"></script> -->
   </body>
 </html>
