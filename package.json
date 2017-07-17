@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "http-server",
-    "webpack": "webpack",
+    "build": "webpack",
     "watch": "webpack --watch"
   },
   "repository": {
