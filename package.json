@@ -2,13 +2,13 @@
   "name": "flight-visualization",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/map_visualization.js",
   "engines": {
     "node": "8.1.2",
     "npm": "5.0.3"
   },
   "scripts": {
-    "start": "node server",
+    "start": "node lib/map_visualization.js",
     "postinstall": "webpack",
     "watch": "webpack --watch"
   },
