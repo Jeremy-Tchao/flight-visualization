@@ -75,9 +75,11 @@
         margin-left: 20px;
       }
       .clock{
-        fill: white;
-        position: absolute;
+        color: white;
         font-family: helvetica;
+        padding:4px;
+        border: 1px solid white;
+        border-radius: 5px;
       }
       .pause{
         color:white;
@@ -87,7 +89,7 @@
         border: 3px solid white;
         width: 60px;
         height: 25px;
-        margin-left: 20px;
+        margin-left: 5px;
         border-radius: 5px;
       }
       .play{
@@ -103,6 +105,10 @@
       .speed{
         color: lightgrey;
         order: -2;
+        font-family: helvetica;
+        padding: 4px;
+        border: 1px solid white;
+        border-radius: 5px;
       }
       .map{
       }
@@ -111,18 +117,25 @@
         fill: #000006;
       }
 
-
+      .logo-buttons{
+        display: flex;
+        justify-content: space-between;
+        width: 100%
+      }
 
 
     </style>
   </head>
   <body>
-    <img src="images/maple-white.png" class="title"></img>
+    <div id="logo-buttons" class="logo-buttons">
+      <img src="images/maple-white.png" class="title"></img>
+      <div id="buttons" class="buttons"></div>
+    </div>
     <div id="map" class="map"></div>
     <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/topojson.v1.min.js" charset="utf-8"></script>
     <script src="lib/map_visualization.js"></script>
-    <script src="lib/rotation.js"></script>
+    <!-- <script src="lib/rotation.js"></script> -->
     <script src="https://koutst:AIzaSyCEHgWuIYyTXOzKriLZZgrW8I7DBBZptr8@opensky-network.org/api/states/all"></script>
   </body>
 </html>
