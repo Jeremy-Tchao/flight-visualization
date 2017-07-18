@@ -9,7 +9,7 @@
   },
   "scripts": {
     "postinstall": "webpack",
-    "watch": "webpack --watch"
+    "webpack": "webpack --watch"
   },
   "repository": {
     "type": "git",
