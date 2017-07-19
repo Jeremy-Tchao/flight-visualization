@@ -24,6 +24,7 @@
   "dependencies": {
     "d3": "^4.10.0",
     "html-loader": "^0.4.5",
+    "kayak-scraper": "^1.0.2",
     "node-loader": "^0.6.0",
     "requirejs": "^2.3.3",
     "topojson": "^1.6.27",
