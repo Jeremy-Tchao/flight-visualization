@@ -66,24 +66,25 @@
       }
       .countrydetails{
         white-space: nowrap;
+        font-size: 14px;
+        font-weight: bold;
         margin-top: 10px;
         display: flex;
         justify-content: left;
-        color: grey;
-        font-family: 'Robo Slab';
+        fill: white;
+        font-family: 'Robo Slab', helvetica;
         order: -1;
         margin-left: 20px;
       }
       .clock{
+        font-weight: bold;
         color: white;
         font-family: helvetica;
         padding:4px;
-        border: 1px solid white;
-        border-radius: 5px;
       }
       .pause{
         color:white;
-
+        font-weight: bold;
         order: -2;
         background: black;
         border: 3px solid white;
@@ -91,8 +92,13 @@
         height: 25px;
         margin-left: 5px;
         border-radius: 5px;
+        cursor:pointer;
+
       }
       .play{
+        cursor:pointer;
+
+        font-weight: bold;
         color:white;
         order: -2;
         background: black;
@@ -103,12 +109,11 @@
         margin-left: 5px;
       }
       .speed{
+        font-weight: bold;
         color: lightgrey;
         order: -2;
         font-family: helvetica;
         padding: 4px;
-        border: 1px solid white;
-        border-radius: 5px;
       }
       .map{
       }
@@ -122,6 +127,10 @@
         justify-content: space-between;
         width: 100%
       }
+      .time-speed{
+        display: flex;
+        flex-direction: column-reverse;
+      }
 
 
     </style>
@@ -132,6 +141,7 @@
       <div id="buttons" class="buttons"></div>
     </div>
     <div id="map" class="map"></div>
+    <div class="time-speed"></div>
     <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/topojson.v1.min.js" charset="utf-8"></script>
     <script src="lib/map_visualization.js"></script>
