@@ -133,6 +133,14 @@
         display: flex;
         flex-direction: column-reverse;
       }
+      .instructions{
+        width: 650px;
+        color: white;
+        font-weight: bold;
+        font-family: 'Robo Slab', helvetica;
+        margin-top: 40px;
+        text-align: center;
+      }
 
 
     </style>
@@ -140,6 +148,8 @@
   <body>
     <div id="logo-buttons" class="logo-buttons">
       <img src="images/maple-white.png" class="title"></img>
+      <span class="instructions">Maple utilizes D3.js to create an interactive globe with flights mapped over it. The green lines represent flight paths. Red dots represent planes. When hovering your mouse over a country you will see some summary information about that country. The globe is zoomable, using your mouses scroll wheel or zoom gestures on your trackpad. The globe is also draggable using click and drag.
+    </span>
       <div id="buttons" class="buttons"></div>
     </div>
     <div id="map" class="map"></div>
