@@ -1,8 +1,12 @@
 # Maple
 
+[Live](http://takink.com/flight-visualization)
+
 Maple is a flight traffic visualization application created using D3.js. It consists of a globe with major aiports plotted on top and flight animations on top.
 
 # Overview
+
+![action](./images/action.png)
 
 Maple is created using D3.js. D3 allows you to attach data to the DOM to create data based visualizations. I used d3 to create an orhographic rendering of the earth. I utilize D3 geoPath projections and geoOrthographic projections as well to create each individual country, airport and flight path.
 
