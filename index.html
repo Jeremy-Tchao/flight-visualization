@@ -4,10 +4,12 @@
     <meta charset="utf-8">
     <title>Flights</title>
     <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 
     <style>
       <link href="https://fonts.googleapis.com/css?family=Robo+Slab" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
+
 
       p {
         font-size: 0.85em
@@ -141,7 +143,32 @@
         margin-top: 40px;
         text-align: center;
       }
+      .links{
+        display: flex;
+        justify-content: flex-end;
+      }
+      a{
+        margin-right: 10px;
+        margin-top: 20px;
+      }
+      a:link {
+        color: white;
+        text-decoration: none;
+      }
+      a:visited {
+        text-decoration: none;
+        color: white;
+      }
 
+      .buttons-links{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .buttons{
+        margin-bottom: 70px;
+      }
 
     </style>
   </head>
@@ -150,7 +177,14 @@
       <img src="images/maple-white.png" class="title"></img>
       <span class="instructions">Maple utilizes D3.js to create an interactive globe with flights mapped over it. The green lines represent flight paths. Red dots represent planes. When hovering your mouse over a country you will see some summary information about that country. The globe is zoomable, using your mouses scroll wheel or zoom gestures on your trackpad. The globe is also draggable using click and drag.
     </span>
-      <div id="buttons" class="buttons"></div>
+      <div id="buttons-links" class="buttons-links">
+        <div id="links" class="links">
+          <a href="https://github.com/koutst" target="_blank" class="fa fa-github fa-2x"></a>
+          <a href="https://linkedin.com/in/taki-k" target="_blank" class="fa fa-linkedin fa-2x"></a>
+          <a href="https://angel.co/taki-koutsomitis" target="_blank" class="fa fa-angellist fa-2x"></a>
+        </div>
+        <div id="buttons" class="buttons"></div>
+      </div>
     </div>
     <div id="map" class="map"></div>
     <div class="time-speed"></div>
