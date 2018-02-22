@@ -1,0 +1,158 @@
+
+
+
+p {
+font-size: 0.85em
+}
+html{
+background: #ececec;
+width:100vw;
+}
+body{
+background: white;
+display: flex;
+justify-content: flex-start;
+flex-direction: row;
+flex-wrap: wrap;
+align-items: center;
+margin: 0;
+}
+.title{
+font-family: "Robo Slab", helvetica;
+display: flex;
+justify-content: flex-start;
+color: white;
+order: -5;
+width: 200px;
+height: 50px;
+}
+div{
+/*display: flex;
+align-items: center;
+justify-content: center;*/
+
+}
+svg {
+background: transparent;
+/*display: flex;*/
+/*padding-top: 60px;*/
+/*border-top: 4px solid black;*/
+}
+.country {
+fill: #0198D9;
+stroke:#ececec;
+stroke-width: 0.5px;
+
+}
+.airport {
+fill: white;
+stroke: #6cb0e0;
+stroke-width: 0.5;
+stroke-linecap: round;
+stroke-linejoin: round;
+vector-effect: non-scaling-stroke;
+}
+
+.plane
+{
+    fill: red;
+    
+}
+
+.route{
+stroke: #FFFFFF;
+stroke-width:0.8
+}
+.countrydetails{
+white-space: nowrap;
+font-size: 14px;
+font-weight: bold;
+margin-top: 10px;
+display: flex;
+justify-content: left;
+fill: white;
+font-family: 'Robo Slab', helvetica;
+order: -1;
+margin-left: 20px;
+}
+.clock{
+font-weight: bold;
+color: black;
+font-family: helvetica;
+padding:4px;
+}
+.play{
+cursor:pointer;
+font-weight: bold;
+color:white;
+order: -2;
+background: black;
+border: 3px solid white;
+border-radius: 5px;
+width: 60px;
+height: 25px;
+margin: 5px;
+}
+.speed{
+font-weight: bold;
+color: black;
+order: -2;
+font-family: helvetica;
+padding: 4px;
+}
+.map
+{
+    width: 100%;
+}
+
+.rect-g-map{
+fill: #ececec;
+}
+
+.time-speed{
+display: block;
+
+margin: auto;
+
+
+
+}
+.instructions{
+width: 650px;
+color: white;
+font-weight: bold;
+font-family: 'Robo Slab', helvetica;
+margin-top: 40px;
+margin-right: 40px;
+text-align: center;
+}
+.links{
+display: flex;
+justify-content: flex-end;
+}
+a{
+margin-right: 10px;
+margin-top: 20px;
+}
+a:link {
+color: white;
+text-decoration: none;
+}
+a:visited {
+text-decoration: none;
+color: white;
+}
+
+.buttons-links{
+margin-right: 20px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.buttons
+{   
+    width: 300px;
+    margin: auto;
+}
+
